@@ -15,9 +15,9 @@
   width: 500px;
   margin: 0 auto;
 }
-#app {
+/* #app {
   background-color: #18191a;
-}
+} */
 @media (max-width: 800px) {
   .auth {
     width: 96%;
