@@ -18,7 +18,7 @@ export default new Vuetify({
         info: "#2196F3",
         success: "#4CAF50",
         warning: "#FFC107",
-        card: "#363A40",
+        card: "#242526",
         colo: "#e8e8e8",
         navbar: "#242526",
         btnColor: "#4E4F50",
