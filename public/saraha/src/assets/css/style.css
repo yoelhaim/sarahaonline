@@ -18,6 +18,22 @@
 /* #app {
   background-color: #18191a;
 } */
+.footeer a {
+  margin-right: 5px;
+  color: white;
+  text-decoration: none;
+  border-left: 1px solid grey;
+  padding-left: 2px;
+}
+.homePage {
+  height: 100vh;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.homePage::-webkit-scrollbar {
+  display: none;
+}
 @media (max-width: 800px) {
   .auth {
     width: 96%;
