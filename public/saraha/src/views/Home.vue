@@ -5,20 +5,32 @@
         style="width: 500px;
   margin: 0 auto;"
       >
-        <v-card class="col-md-5" outlined shaped>
-          <h2>Login</h2>
-          <div class="text-center">
-            <v-form>
-              <v-col cols="12" sm="12">
-                <v-text-field
-                  v-model="message4"
-                  label="Outlined"
-                  outlined
-                  clearable
-                  prepend-inner-icon="mdi-map-marker"
-                ></v-text-field>
-              </v-col>
-            </v-form>
+        <v-card
+          v-for="item in 7"
+          :key="item"
+          class="col-md-5 mt-3 pb-1"
+          outlined
+          color="card"
+        >
+          <div class="text-right">
+            <p>
+              <v-icon> mdi-account-circle</v-icon>
+              <strong> غير معروف</strong>
+            </p>
+            <v-card class="pa-2">
+              sjsjsjskshjkshjsh
+            </v-card>
+            <v-divider class="ma-2"></v-divider>
+            <div>
+              <v-chip color="orange"
+                ><v-icon :size="15">mdi-clock</v-icon> ! minit</v-chip
+              >
+              <span class="float-left">
+                <v-chip color="red"
+                  ><v-icon :size="15">mdi-share</v-icon> مشاركة</v-chip
+                ></span
+              >
+            </div>
           </div>
         </v-card>
       </div>
@@ -31,3 +43,10 @@ export default {
   name: "Home",
 };
 </script>
+<style>
+.inputFormAuth {
+  padding: 4px;
+  margin: 4px;
+  height: 70px;
+}
+</style>
