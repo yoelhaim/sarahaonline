@@ -20,6 +20,8 @@ export default new Vuetify({
         warning: "#FFC107",
         card: "#363A40",
         colo: "#e8e8e8",
+        navbar: "#242526",
+        btnColor: "#4E4F50",
       },
       light: {
         primary: "#008DBD",
@@ -31,6 +33,7 @@ export default new Vuetify({
         warning: "#FFC107",
         card: "#e8e8e8",
         colo: "#1E1E1E",
+        navbar: "##242526",
       },
     },
   },
