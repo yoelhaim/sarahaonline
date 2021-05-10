@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap");
+* {
+  font-family: "Tajawal", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#logo {
+  font-family: "Reem Kufi", sans-serif;
+}
+.auth {
+  width: 500px;
+  margin: 0 auto;
+}
+@media (max-width: 800px) {
+  .auth {
+    width: 96%;
+    margin-right: 2%;
+  }
+}
