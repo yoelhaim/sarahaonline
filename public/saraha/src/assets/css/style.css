@@ -33,6 +33,11 @@ a {
   overflow-y: auto;
   scrollbar-width: none;
 }
+.inputFormAuth {
+  padding: 4px;
+  margin: 4px;
+  height: 76px;
+}
 .homePage::-webkit-scrollbar {
   display: none;
 }
