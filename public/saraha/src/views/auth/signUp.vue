@@ -5,13 +5,14 @@
         <v-card class="col-md-5" outlined shaped color="card">
           <h2 class="secondary--text">تسجيل الدخول</h2>
           <div class="text-center">
-            <v-form>
+            <v-form ref="signup" v-model="valids">
               <!-- fill name -->
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-text-field
-                  v-model="message4"
+                  v-model="fullname"
                   label="اسمك الكامل"
                   outlined
+                  :rules="nameUser"
                   clearable
                   prepend-inner-icon="mdi-account-circle"
                 ></v-text-field>
@@ -19,7 +20,8 @@
               <!-- email -->
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-text-field
-                  v-model="message4"
+                  v-model="email"
+                  :rules="emailRulus"
                   label="الإيميل"
                   outlined
                   clearable
@@ -30,7 +32,7 @@
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-text-field
                   label="كلمة السر "
-                  v-model="message4"
+                  v-model="password"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="passwordRules"
                   :type="show1 ? 'text' : 'password'"
@@ -46,7 +48,8 @@
               <!-- link -->
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-text-field
-                  v-model="message4"
+                  v-model="link"
+                  :rules="linkRulus"
                   label="رابطك المخصص"
                   outlined
                   clearable
@@ -68,6 +71,8 @@
                   <v-btn
                     color="secondary"
                     depressed
+                    :disabled="!valids"
+                    @click="addAccount"
                     elevation="9"
                     medium
                     outlined
@@ -88,6 +93,48 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      fullname: "",
+      email: "",
+      valids: true,
+      link: "",
+      password: "",
+    };
+  },
+  computed: {
+    nameUser() {
+      return [(v) => !!v || "required  name", (v) => v && v.length <= 20];
+    },
+    emailRulus() {
+      return [
+        (v) => !!v || "required  name",
+        (v) => this.$pattern.email.test(v) || "req",
+      ];
+    },
+    passwordRules() {
+      return [
+        (v) => !!v || "required  name",
+        (v) => this.$pattern.password.test(v) || "req",
+      ];
+    },
+    linkRulus() {
+      return [
+        (v) => !!v || "required  name",
+        (v) => this.$pattern.username.test(v) || "req url",
+      ];
+    },
+    valide() {
+      return this.$refs.signup.validate();
+    },
+  },
+  methods: {
+    addAccount: function() {
+      if (this.valide) {
+        alert(2);
+      }
+    },
+  },
 };
 </script>
 <style>
