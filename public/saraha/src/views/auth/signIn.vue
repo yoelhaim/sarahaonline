@@ -5,11 +5,12 @@
         <v-card class="col-md-5" outlined shaped color="card">
           <h2 class="secondary--text">تسجيل الدخول</h2>
           <div class="text-center">
-            <v-form>
+            <v-form ref="signin" v-model="valids">
               <!-- email -->
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-text-field
-                  v-model="message4"
+                  v-model="email"
+                  :rules="emailRulus"
                   label="الإيميل"
                   outlined
                   clearable
@@ -20,7 +21,7 @@
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-text-field
                   label="كلمة السر "
-                  v-model="message4"
+                  v-model="password"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="passwordRules"
                   :type="show1 ? 'text' : 'password'"
@@ -38,6 +39,8 @@
                   <v-btn
                     color="secondary"
                     depressed
+                    @click="login"
+                    :disabled="!valids"
                     elevation="9"
                     medium
                     outlined
@@ -58,6 +61,37 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      email: "",
+      valids: true,
+      password: "",
+    };
+  },
+  computed: {
+    emailRulus() {
+      return [
+        (v) => !!v || "required  name",
+        (v) => this.$pattern.email.test(v) || "req",
+      ];
+    },
+    passwordRules() {
+      return [
+        (v) => !!v || "required  name",
+        (v) => this.$pattern.password.test(v) || "req",
+      ];
+    },
+    valide() {
+      return this.$refs.signin.validate();
+    },
+  },
+  methods: {
+    login: function() {
+      if (this.valide) {
+        alert(222);
+      }
+    },
+  },
 };
 </script>
 <style>
