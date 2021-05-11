@@ -25,10 +25,12 @@
   border-left: 1px solid grey;
   padding-left: 2px;
 }
+a {
+  text-decoration: none;
+}
 .homePage {
   height: 100vh;
   overflow-y: auto;
-  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .homePage::-webkit-scrollbar {
