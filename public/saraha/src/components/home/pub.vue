@@ -2,25 +2,29 @@
   <v-container class="col-md-3  mt-5 auth text-right">
     <h3><v-icon>mdi-google-analytics</v-icon> <strong>إحصأيتك</strong></h3>
     <v-divider class="ma-2"></v-divider>
-    <v-list-item dense nav>
-      <v-list-item link>
-        <v-list-item-icon>
-          <v-icon>mdi-facebook-messenger</v-icon>
-          <v-list-item-title class="mr-2">معترف لك </v-list-item-title>
-        </v-list-item-icon>
-        <v-badge content="8" value="8" color="green" overlap> </v-badge>
+    <router-link to="/">
+      <v-list-item dense nav>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-facebook-messenger</v-icon>
+            <v-list-item-title class="mr-2">معترف لك </v-list-item-title>
+          </v-list-item-icon>
+          <v-badge content="8" value="8" color="green" overlap> </v-badge>
+        </v-list-item>
       </v-list-item>
-    </v-list-item>
+    </router-link>
     <!-- pos -->
-    <v-list-item dense nav>
-      <v-list-item link>
-        <v-list-item-icon>
-          <v-icon>mdi-account-key</v-icon>
-          <v-list-item-title class="mr-2">نسبة الصداقة </v-list-item-title>
-        </v-list-item-icon>
-        <v-badge content="5" value="8" color="green" overlap> </v-badge>
+    <router-link to="/mychalange">
+      <v-list-item dense nav>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-account-key</v-icon>
+            <v-list-item-title class="mr-2">نسبة الصداقة </v-list-item-title>
+          </v-list-item-icon>
+          <v-badge content="5" value="8" color="green" overlap> </v-badge>
+        </v-list-item>
       </v-list-item>
-    </v-list-item>
+    </router-link>
     <h3 class="mt-5">
       <v-icon>mdi-find-replace</v-icon> <strong>تابعنا</strong>
     </h3>
