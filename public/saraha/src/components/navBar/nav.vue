@@ -15,13 +15,17 @@
       </div>
 
       <v-spacer></v-spacer>
+      <router-link to="/">
+        <v-btn small text fab class="mr-2 btnColor">
+          <v-icon>mdi-facebook-messenger</v-icon>
+        </v-btn>
+      </router-link>
+      <router-link to="/mychalange">
+        <v-btn small text fab class="mr-2 btnColor">
+          <v-icon>mdi-puzzle-heart</v-icon>
+        </v-btn></router-link
+      >
 
-      <v-btn small text fab class="mr-2 btnColor">
-        <v-icon>mdi-facebook-messenger</v-icon>
-      </v-btn>
-      <v-btn small text fab class="mr-2 btnColor">
-        <v-icon>mdi-puzzle-heart</v-icon>
-      </v-btn>
       <v-btn small text fab class="mr-2 btnColor">
         <v-icon>mdi-youtube</v-icon>
       </v-btn>
