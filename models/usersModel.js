@@ -1,4 +1,4 @@
-const users = (db, dtype) => {
+const users = (db, type) => {
   return db.define("users", {
     fullname: {
       type: type.STRING,
@@ -26,3 +26,4 @@ const users = (db, dtype) => {
     },
   });
 };
+module.exports = users;
