@@ -59,7 +59,7 @@
               <!-- image -->
               <v-col cols="12" sm="12" class="inputFormAuth">
                 <v-file-input
-                  v-model="message4"
+                  v-model="file"
                   label="صورة شخصية"
                   outlined
                   clearable
@@ -100,6 +100,8 @@ export default {
       valids: true,
       link: "",
       password: "",
+      file: "",
+      show1: "",
     };
   },
   computed: {
@@ -131,7 +133,20 @@ export default {
   methods: {
     addAccount: function() {
       if (this.valide) {
-        alert(2);
+        this.$store
+          .dispatch("signUp", {
+            fullname: this.fullname,
+            email: this.email,
+            password: this.password,
+            link_profile: this.link,
+            img_profile: "skdkdk",
+          })
+          .then((res) => {
+            alert(res.data.message);
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
       }
     },
   },
