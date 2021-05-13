@@ -27,6 +27,7 @@ const addusers = async (req, res, next) => {
         .create(body)
         .then((result) => {
           res.json({
+            code: 200,
             message: "succefully create",
             data: result,
           });
