@@ -29,9 +29,18 @@
       <v-btn small text fab class="mr-2 btnColor">
         <v-icon>mdi-youtube</v-icon>
       </v-btn>
-      <v-btn small text fab class="mr-2 btnColor">
+      <v-btn small text fab class="mr-2 btnColor" @click="logout">
         <v-icon>mdi-cogs</v-icon>
       </v-btn>
     </v-app-bar>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    logout: async function() {
+      await this.$store.dispatch("signOut");
+    },
+  },
+};
+</script>
