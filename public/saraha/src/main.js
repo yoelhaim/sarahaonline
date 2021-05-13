@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
 import "./assets/css/style.css";
+import "./plugins/axios";
 import patterns from "./store/patterns";
 import router from "./router";
 import store from "./store";
