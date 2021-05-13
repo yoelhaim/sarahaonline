@@ -8,6 +8,7 @@
               label="رابطك  "
               placeholder="رابطك  "
               filled
+              v-model="youlink"
               rounded
               dense
               readonly
@@ -62,6 +63,11 @@ export default {
   name: "Home",
   components: {
     pub,
+  },
+  data() {
+    return {
+      youlink: `https://sari7ni.livebotola.com/u/${this.$store.getters.getLink}`,
+    };
   },
 };
 </script>
