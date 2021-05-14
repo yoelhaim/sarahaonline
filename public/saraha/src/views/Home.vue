@@ -21,7 +21,7 @@
           </div>
         </v-card>
         <v-card
-          v-for="item in 7"
+          v-for="item in dataPost"
           :key="item"
           class="col-md-5 mt-3 pb-1"
           outlined
@@ -33,7 +33,7 @@
               <strong> غير معروف</strong>
             </p>
             <v-card class="pa-2">
-              sjsjsjskshjkshjsh
+              {{ item.message }}
             </v-card>
             <v-divider class="ma-2"></v-divider>
             <div>
@@ -67,7 +67,23 @@ export default {
   data() {
     return {
       youlink: `https://sari7ni.livebotola.com/u/${this.$store.getters.getLink}`,
+      dataPost: [],
     };
+  },
+  methods: {
+    fetchPost: function() {
+      this.$http
+        .get("/msg/all/" + this.$store.getters.getuserId)
+        .then((res) => {
+          this.dataPost = res.data;
+        })
+        .then((err) => {
+          console.log(err);
+        });
+    },
+  },
+  mounted() {
+    this.fetchPost();
   },
 };
 </script>
