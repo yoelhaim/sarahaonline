@@ -5,8 +5,10 @@ const cors = require("cors");
 app.use([cors(), express.json(), express.urlencoded({ extended: false })]);
 // include routes
 const UserRoute = require("./route/userRoute");
+const MessageRoute = require("./route/messageRoute");
 // fin include roues
 app.use("/auth", UserRoute);
+app.use("/msg", MessageRoute);
 
 // error
 app.use(function (err, req, res, next) {
