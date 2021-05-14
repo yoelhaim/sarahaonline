@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
         name: "SignIn",
         params: to.params,
         query: {
-          nextPAtch: to.name,
+          nextPatch: to.name,
         },
       });
     }
