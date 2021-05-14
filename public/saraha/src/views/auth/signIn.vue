@@ -46,6 +46,7 @@
                     outlined
                     raised
                     rounded
+                    :loading="loading"
                     ><v-icon>mdi-account</v-icon> تسجيل الدخول</v-btn
                   >
                 </div>
@@ -66,6 +67,7 @@ export default {
       email: "",
       valids: true,
       password: "",
+      loading: false,
     };
   },
   computed: {
@@ -87,8 +89,33 @@ export default {
   },
   methods: {
     login: function() {
+      this.loading = true;
       if (this.valide) {
-        alert(222);
+        this.$store
+          .dispatch("signIn", {
+            email: this.email,
+            password: this.password,
+          })
+          .then((res) => {
+            this.loading = false;
+            if (res.status === 200 && res.data.code === 200) {
+              if (this.$route.query.nextPatch) {
+                this.$route
+                  .push({
+                    name: this.$route.query.nextPath,
+                    params: this.$route.params,
+                  })
+                  .then(null, (err) => {
+                    this.$router.push({ name: "NotFound" });
+                    return err;
+                  });
+              } else this.$router.push({ name: "Home" });
+            }
+          })
+          .catch((err) => {
+            this.loading = false;
+            return err;
+          });
       }
     },
   },
