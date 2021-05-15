@@ -21,9 +21,9 @@ export default {
     AUTH_SUCCESS: (state, payload) => {
       state.accessToken = payload.accessToken;
       state.user = payload.user;
-      console.log("hehe " + JSON.parse(payload.user));
+
       localStorage.setItem("access_token", payload.accessToken);
-      localStorage.setItem("user", payload.user);
+      localStorage.setItem("user", JSON.stringify(payload.user));
     },
     logOut_session: (state) => {
       localStorage.removeItem("access_token");
@@ -41,7 +41,7 @@ export default {
             if (res.status === 200 && res.data.code === 200) {
               await context.commit("AUTH_SUCCESS", {
                 accessToken: res.data.token,
-                user: JSON.stringify(res.data),
+                user: res.data,
               });
               resolve(res);
             }
