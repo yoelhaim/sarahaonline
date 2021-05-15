@@ -5,6 +5,7 @@ export default [
     component: () => import("../views/auth/signIn.vue"),
     meta: {
       authRequired: false,
+      title: "تسجيل الدخول",
     },
   },
   {
@@ -13,6 +14,7 @@ export default [
     component: () => import("../views/auth/signUp.vue"),
     meta: {
       authRequired: false,
+      title: "إنشاء حساب جديد",
     },
   },
 ];
