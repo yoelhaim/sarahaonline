@@ -52,6 +52,10 @@
                 </div>
               </v-col>
             </v-form>
+            <h4>
+              إن لم يكن لك لحساب انشء حسابك
+              <router-link to="/signup">اضغط هنا</router-link>
+            </h4>
           </div>
         </v-card>
       </div>

@@ -56,16 +56,7 @@
                   prepend-inner-icon="mdi-link"
                 ></v-text-field>
               </v-col>
-              <!-- image -->
-              <v-col cols="12" sm="12" class="inputFormAuth">
-                <v-file-input
-                  v-model="file"
-                  label="صورة شخصية"
-                  outlined
-                  clearable
-                  prepend-inner-icon="mdi-image"
-                ></v-file-input>
-              </v-col>
+
               <v-col>
                 <div class="text-center">
                   <v-btn
@@ -83,6 +74,10 @@
                 </div>
               </v-col>
             </v-form>
+            <h4>
+              إن كنت تملك حساب
+              <router-link to="/signin">اضغط هنا</router-link>
+            </h4>
           </div>
         </v-card>
       </div>
@@ -100,7 +95,6 @@ export default {
       valids: true,
       link: "",
       password: "",
-      file: "",
       show1: "",
     };
   },
@@ -139,13 +133,17 @@ export default {
             email: this.email,
             password: this.password,
             link_profile: this.link,
-            img_profile: "skdkdk",
           })
           .then((res) => {
-            alert(res.data.message);
+            this.$router.push({ name: "Home" });
+            this.$swal.fire(
+              "تم إنشاء الحساب بنجاح",
+              "تم إنشاء الحساب بنجاح",
+              "success"
+            );
           })
           .catch((err) => {
-            alert(err.message);
+            this.$swal.fire(err.message, "oops", "error");
           });
       }
     },
