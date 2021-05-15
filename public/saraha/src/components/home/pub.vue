@@ -9,12 +9,12 @@
             <v-icon>mdi-facebook-messenger</v-icon>
             <v-list-item-title class="mr-2">معترف لك </v-list-item-title>
           </v-list-item-icon>
-          <v-badge content="8" value="8" color="green" overlap> </v-badge>
+          <!-- <v-badge content="8" value="8" color="green" overlap> </v-badge> -->
         </v-list-item>
       </v-list-item>
     </router-link>
     <!-- pos -->
-    <router-link to="/mychalange">
+    <!-- <router-link to="/mychalange">
       <v-list-item dense nav>
         <v-list-item link>
           <v-list-item-icon>
@@ -24,13 +24,18 @@
           <v-badge content="5" value="8" color="green" overlap> </v-badge>
         </v-list-item>
       </v-list-item>
-    </router-link>
+    </router-link> -->
     <h3 class="mt-5">
       <v-icon>mdi-find-replace</v-icon> <strong>تابعنا</strong>
     </h3>
     <v-divider class="ma-2"></v-divider>
     <div>
-      <v-list-item dense nav>
+      <v-list-item
+        dense
+        nav
+        href="https://facebook.com/elhaimeryou"
+        target="_blank"
+      >
         <v-list-item link>
           <v-list-item-icon>
             <v-icon color="primary">mdi-facebook</v-icon>
@@ -40,7 +45,12 @@
       </v-list-item>
     </div>
     <div>
-      <v-list-item dense nav>
+      <v-list-item
+        dense
+        nav
+        href="https://twitter.com/youssefelhaime"
+        target="_blank"
+      >
         <v-list-item link>
           <v-list-item-icon>
             <v-icon color="blue">mdi-twitter</v-icon>
@@ -50,7 +60,12 @@
       </v-list-item>
     </div>
     <div>
-      <v-list-item dense nav>
+      <v-list-item
+        dense
+        nav
+        href="https://youtube.com/youssefelhaimer8"
+        target="_blank"
+      >
         <v-list-item link>
           <v-list-item-icon>
             <v-icon color="red">mdi-youtube</v-icon>

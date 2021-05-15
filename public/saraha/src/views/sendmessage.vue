@@ -4,13 +4,22 @@
       <div class="auth col-md-6 homePage">
         <div class="d-flex flex-column justify-space-between align-center">
           <v-img
+            v-if="!not"
             style="border-radius:50%"
             width="100"
             height="100"
-            src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+            :src="` http://localhost:3000/uploads/${image}`"
           ></v-img>
-          <h3 class="mt-2"><v-icon>mdi-account-circle</v-icon>youmer you</h3>
+          <v-img
+            v-else
+            style="border-radius:50%"
+            width="100"
+            height="100"
+            src="@/assets/userlogo.png"
+          ></v-img>
+          <h3 class="mt-2"><v-icon>mdi-account-circle</v-icon> {{ name }}</h3>
         </div>
+        ads
         <v-form v-model="messageForm" ref="msg" lazy-validation>
           <v-card class="col-md-5 mt-3 pb-1" outlined color="card">
             <div class="text-right">
@@ -71,6 +80,8 @@ export default {
     return {
       message: "",
       messageForm: true,
+      name: "",
+      image: "",
     };
   },
   computed: {
@@ -85,11 +96,34 @@ export default {
     },
   },
   methods: {
-    sendMesssage: function() {
-      if (this.valid) {
-        alert(1);
+    userdata: async function() {
+      const user = await this.$http.get("/auth/user/" + this.$route.params.id);
+      if (user.status === 200) {
+        this.image = user.data.img_profile;
+        this.name = user.data.fullname;
+        // if(user.data.length)
       }
     },
+    sendMesssage: function() {
+      if (this.valid) {
+        this.$http
+          .post("/msg/add", {
+            message: this.message.trim(),
+            userId: this.$route.params.id,
+          })
+          .then((res) => {
+            this.$swal.fire("تم ", "إرسال رسالتك بنجاح", "success");
+            this.message = "";
+            return res;
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
+      }
+    },
+  },
+  mounted() {
+    this.userdata();
   },
 };
 </script>

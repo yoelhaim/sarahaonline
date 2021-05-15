@@ -16,12 +16,17 @@ const routes = [
     component: Home,
     meta: {
       authRequired: true,
+      title: "إعترف لي",
     },
   },
   {
     path: "/about",
     name: "About",
     component: () => import("../views/About.vue"),
+    meta: {
+      global: true,
+      title: "خطأ الصفحة غير موجودة",
+    },
   },
   ///
 ];
@@ -33,7 +38,7 @@ const router = new VueRouter({
 });
 router.afterEach((to) => {
   Vue.nextTick(() => {
-    document.title = to.meta.title || "welcomme";
+    document.title = to.meta.title || "إعترف لي";
   });
 });
 router.beforeEach((to, from, next) => {
