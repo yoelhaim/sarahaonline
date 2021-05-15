@@ -36,13 +36,22 @@ const addusers = async (req, res, next) => {
         if (err) {
           next(createError.Forbidden("error password hash"));
         } else {
+          if (!req.files) {
+            avatar = "not";
+          } else {
+            let getRandomInt = Date.now();
+            let avatar;
+            avatar = req.files.avatar;
+            avatar = getRandomInt + avatar.name;
+            req.files.avatar.mv("./uploads/" + avatar);
+          }
           await users
             .create({
               fullname: req.body.fullname,
               email: req.body.email,
               password: hash,
-              link_profile: linkProfile,
-              img_profile: req.body.img_profile,
+              link_profile: req.body.link_profile,
+              img_profile: avatar,
             })
             .then((result) => {
               const token = jwt.sign(
@@ -118,5 +127,52 @@ const signIn = async (req, res, next) => {
     next(createError.Forbidden(error));
   }
 };
+const getuser = async (req, res, next) => {
+  try {
+    // if (parseInt(req.params.id != req.user.id))
+    //   throw createError.Forbidden("no permission");
+    let user = await users.findOne({
+      where: { link_profile: req.params.id },
+      attributes: { exclude: ["password"] },
+    });
+    res.send(user);
+  } catch (error) {
+    next(createError.Forbidden(error));
+  }
+};
+const updateImage = async (req, res, next) => {
+  try {
+    let avatar;
+    if (!req.files) {
+      avatar = "not";
+    } else {
+      let getRandomInt = Date.now();
 
-module.exports = { addusers, signIn };
+      avatar = req.files.avatar;
+      console.log("hhhhhhhhh " + avatar.name);
+      avatar = getRandomInt + avatar.name;
+      req.files.avatar.mv("./uploads/" + avatar);
+    }
+    let update = await users
+      .update(
+        {
+          img_profile: avatar,
+        },
+        {
+          where: { id: req.params.id },
+        }
+      )
+      .then((resu) => {
+        res.json({
+          message: "succes",
+        });
+      })
+      .catch((errs) => {
+        next(createError.Forbidden(errs.message));
+      });
+  } catch (error) {
+    next(createError.Forbidden(error.message));
+  }
+};
+
+module.exports = { addusers, signIn, getuser, updateImage };
